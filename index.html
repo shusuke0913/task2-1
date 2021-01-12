@@ -5,11 +5,56 @@
     <title>Task2-1</title>
   </head>
   <body>
-
-
+      <h1 class="main-title">FizzBuzz問題</h1>
+      <p>
+        FizzNum：
+        <input type="text" name="number" id="fizz" placeholder="整数値を入れてください">
+      </p>
+      <p>
+          BuzzNum：
+        <input type="text" name="number" id="buzz" placeholder="整数値を入れてください">
+      </p>
+      <button type="button" name="name" value="value" id="btn">実行</button>
+      <div id="output">
+        <p>[出力]</p>
+      </div>
     <script>
       'use strict';
-      
+      const btn = document.getElementById('btn');
+      btn.addEventListener('click', () => {
+        const FizzNumber = document.getElementById('fizz');
+        const FizzNum = FizzNumber.value;
+        const BuzzNumber = document.getElementById('buzz');
+        const BuzzNum = BuzzNumber.value;
+        const outputArea = document.getElementById('output');
+        outputArea.innerHTML = '';
+        const tag = document.createElement('p');
+        tag.textContent = '[出力]';
+        outputArea.appendChild(tag);
+        if(isNaN(FizzNum) || isNaN(BuzzNum)){
+          let values = '';
+          values = '整数値を入れてください';
+          const ptag = document.createElement('p');
+          ptag.textContent = values;
+          const ptagArea = document.getElementById('output')
+          outputArea.appendChild(ptag);
+          return;
+        }
+        for (let i = 1; i <= 99; i++) {
+          let value = '';
+          if (i % FizzNum === 0 && i % BuzzNum === 0) {
+            value = "FizzBuzz" + i;
+          } else if (i % FizzNum === 0) {
+            value = "Fizz" + i;
+          } else if (i % BuzzNum === 0) {
+            value = "Buzz" + i;
+          } 
+        const fizzbuzz = document.createElement('p');
+        fizzbuzz.textContent = value;
+        const div = document.getElementById('output')
+        outputArea.appendChild(fizzbuzz);
+      }
+      });
     </script>
   </body>
 </html>
