@@ -22,33 +22,33 @@
       'use strict';
       const btn = document.getElementById('btn');
       btn.addEventListener('click', () => {
-        const FizzNumber = document.getElementById('fizz');
-        const FizzNum = FizzNumber.value;
-        const BuzzNumber = document.getElementById('buzz');
-        const BuzzNum = BuzzNumber.value;
+        const FizzNumber = Number(document.getElementById('fizz').value);
+        const BuzzNumber = Number(document.getElementById('buzz').value);
         const outputArea = document.getElementById('output');
         outputArea.innerHTML = '';
         const tag = document.createElement('p');
         tag.textContent = '[出力]';
         outputArea.appendChild(tag);
-        if(isNaN(FizzNum) || isNaN(BuzzNum)){
-          let values = '';
-          values = '整数値を入れてください';
+        if(!Number.isInteger(FizzNumber) || !Number.isInteger(BuzzNumber) || FizzNumber === 0 || BuzzNumber === 0 || FizzNumber == "" || BuzzNumber == ""){
+          let errorTag = '整数値を入れてください';
           const ptag = document.createElement('p');
-          ptag.textContent = values;
+          ptag.textContent = errorTag;
           const ptagArea = document.getElementById('output')
           outputArea.appendChild(ptag);
           return;
         }
         for (let i = 1; i <= 99; i++) {
           let value = '';
-          if (i % FizzNum === 0 && i % BuzzNum === 0) {
-            value = "FizzBuzz" + i;
-          } else if (i % FizzNum === 0) {
-            value = "Fizz" + i;
-          } else if (i % BuzzNum === 0) {
-            value = "Buzz" + i;
+          let F = `Fizz`;
+          let B = `Buzz`;
+          if (i % FizzNumber === 0 && i % BuzzNumber === 0) {
+            value = F + B + i;
+          } else if (i % FizzNumber === 0) {
+            value = F + i;
+          } else if (i % BuzzNumber === 0) {
+            value = B + i;
           } 
+        console.log(typeof(FizzNumber));
         const fizzbuzz = document.createElement('p');
         fizzbuzz.textContent = value;
         const div = document.getElementById('output')
