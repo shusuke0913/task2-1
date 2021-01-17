@@ -22,36 +22,34 @@
       'use strict';
       const btn = document.getElementById('btn');
       btn.addEventListener('click', () => {
-        const FizzNumber = Number(document.getElementById('fizz').value);
-        const BuzzNumber = Number(document.getElementById('buzz').value);
+        const fizzNumber = Number(document.getElementById('fizz').value);
+        const buzzNumber = Number(document.getElementById('buzz').value);
         const outputArea = document.getElementById('output');
         outputArea.innerHTML = '';
         const tag = document.createElement('p');
         tag.textContent = '[出力]';
         outputArea.appendChild(tag);
-        if(!Number.isInteger(FizzNumber) || !Number.isInteger(BuzzNumber) || FizzNumber === 0 || BuzzNumber === 0 || FizzNumber == "" || BuzzNumber == ""){
+        if(!Number.isInteger(fizzNumber) || !Number.isInteger(buzzNumber) || fizzNumber === 0 || buzzNumber === 0 || fizzNumber == "" || buzzNumber == ""){
           let errorTag = '整数値を入れてください';
           const ptag = document.createElement('p');
           ptag.textContent = errorTag;
-          const ptagArea = document.getElementById('output')
           outputArea.appendChild(ptag);
           return;
         }
         for (let i = 1; i <= 99; i++) {
           let value = '';
-          let F = `Fizz`;
-          let B = `Buzz`;
-          if (i % FizzNumber === 0 && i % BuzzNumber === 0) {
-            value = F + B + i;
-          } else if (i % FizzNumber === 0) {
-            value = F + i;
-          } else if (i % BuzzNumber === 0) {
-            value = B + i;
+          const fizzString = `Fizz`;
+          const buzzString = `Buzz`;
+          if (i % fizzNumber === 0 && i % buzzNumber === 0) {
+            value = fizzString + buzzString + i;
+          } else if (i % fizzNumber === 0) {
+            value = fizzString + i;
+          } else if (i % buzzNumber === 0) {
+            value = buzzString + i;
           } 
-        console.log(typeof(FizzNumber));
+        console.log(typeof(fizzNumber));
         const fizzbuzz = document.createElement('p');
         fizzbuzz.textContent = value;
-        const div = document.getElementById('output')
         outputArea.appendChild(fizzbuzz);
       }
       });
